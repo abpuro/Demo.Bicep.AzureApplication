@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "basics": [
+			{
+                "name": "storage_name",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Storage Name",
+                "placeholder": "",
+                "defaultValue": "storagename",
+                "toolTip": "Use only allowed characters",
+                "constraints": {
+                    "required": true,
+                    "regex": "^[a-z0-9A-Z]{1,30}$",
+                    "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+                },
+                "visible": true
+            },
+			{
+                "name": "uai_name",
+                "type": "Microsoft.Common.TextBox",
+                "label": "User Identity Name",
+                "placeholder": "",
+                "defaultValue": "uainame",
+                "toolTip": "Use only allowed characters",
+                "constraints": {
+                    "required": true,
+                    "regex": "^[a-z0-9A-Z]{1,30}$",
+                    "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+                },
+                "visible": true
+            }
+        ],
+        "steps": [],
+        "outputs": {
+            "location": "[location()]",
+			"storage_name": "[basics('storage_name')]",
+			"uai_name":"[basics('uai_name')]"
+        }
+    }
+}
